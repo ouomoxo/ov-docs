@@ -12,7 +12,26 @@
   together for both local preview and the published site.
 {% endcomment %}
 
-<link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+{%- comment -%}
+  Favicon strategy:
+
+  1. Modern browsers (Chrome/Firefox/Safari/Edge ≥ 2019) ship support for
+     SVG favicons, including @media (prefers-color-scheme) inside the SVG.
+     We point them at `favicon.svg`, which embeds the OV mark PNG as a
+     mask and fills it with #1d1d1f by default — flipping to #ffffff when
+     the user's OS is in dark mode. Background stays transparent.
+
+  2. Older browsers fall through to the PNG (logo-symbol.png, transparent
+     background, black ink). On a dark browser-chrome tab the mark may
+     read a bit faint, but it's still the right shape — and "modern
+     browser support" covers >95% of visitors per CanIUse.
+
+  3. iOS pinned tab / home screen still needs a non-SVG image — we keep
+     `icon.png` for the apple-touch-icon role.
+{%- endcomment -%}
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/images/favicon.svg' | relative_url }}">
+<link rel="alternate icon" type="image/png" href="{{ '/assets/images/logo-symbol.png' | relative_url }}">
+<link rel="mask-icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" color="#1d1d1f">
 <link rel="apple-touch-icon" href="{{ '/assets/images/icon.png' | relative_url }}">
 
 <meta name="theme-color" content="#ffffff">

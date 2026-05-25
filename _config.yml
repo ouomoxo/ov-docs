@@ -31,8 +31,11 @@ color_scheme: ov
 # head_custom.html) and as the apple-touch-icon for iOS pinned tabs.
 logo: /assets/images/logo-symbol.png
 
-# Apple-style minimal favicon — points at the same icon as the app.
-favicon_ico: /assets/images/favicon.png
+# Favicon is wired through `_includes/head_custom.html` so we can ship the
+# SVG + PNG fallback combo (and the `mask-icon` rel for Safari pinned tabs).
+# just-the-docs's built-in `favicon_ico` only sets ONE link tag, which is
+# why we leave it unset here.
+# favicon_ico: /assets/images/logo-symbol.png
 
 search_enabled: true
 search:
