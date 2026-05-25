@@ -1,0 +1,43 @@
+{% comment %}
+  Extra <head> tags for OV docs.
+
+  - Favicon: the OV icon PNG (works in every browser, no .ico needed)
+  - Theme color: matches the site bg so the browser chrome blends in
+  - OG / Twitter card: lets shared links preview with the logo + title
+  - Pretendard Korean webfont: only loaded on browsers that don't ship it
+    locally, so we don't pay the request twice
+
+  The site URL is configured as `https://ouomoxo.github.io` with baseurl
+  `/ov-docs` in _config.yml; the `relative_url` filters below stitch those
+  together for both local preview and the published site.
+{% endcomment %}
+
+<link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/images/icon.png' | relative_url }}">
+
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+
+{%- comment -%} Open Graph / Twitter — for shared link previews. {%- endcomment -%}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ page.title | default: site.title }}">
+<meta property="og:description" content="{{ page.description | default: site.description }}">
+<meta property="og:image" content="{{ '/assets/images/icon.png' | absolute_url }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="OV Docs">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ page.title | default: site.title }}">
+<meta name="twitter:description" content="{{ page.description | default: site.description }}">
+<meta name="twitter:image" content="{{ '/assets/images/icon.png' | absolute_url }}">
+
+{%- comment -%}
+  Pretendard Variable — Korean-aware system-style font. Served from
+  jsdelivr CDN. `font-display: swap` ensures text stays visible while the
+  webfont loads (no FOIT).
+{%- endcomment -%}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+>

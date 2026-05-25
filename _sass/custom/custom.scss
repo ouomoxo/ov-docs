@@ -1,0 +1,290 @@
+// OV docs — custom polish on top of just-the-docs.
+//
+// Loaded automatically by just-the-docs (it imports `_sass/custom/custom.scss`
+// last). Use this file for everything beyond color tokens: typography,
+// spacing, Korean text wrapping, hero card styles, OV logo placement.
+
+// ─── Typography ─────────────────────────────────────────────────────────────
+//
+// System stack first — Apple system fonts on macOS, Segoe UI on Windows,
+// Inter/Roboto on Linux. Pretendard for Korean if the user has it locally;
+// otherwise Apple SD Gothic Neo / Noto Sans KR fall in line.
+
+$font-system: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+              "Pretendard Variable", "Pretendard",
+              "Apple SD Gothic Neo", "Noto Sans KR",
+              "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+            "Liberation Mono", monospace;
+
+body,
+.site-nav,
+.side-bar {
+  font-family: $font-system;
+  // Korean line-breaking: don't split single words across lines.
+  word-break: keep-all;
+  // Apple-style font smoothing on macOS.
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code, kbd, pre, samp,
+.text-mono, .label, .breadcrumb-nav-list-item {
+  font-family: $font-mono;
+}
+
+// Heading hierarchy — tighter letter-spacing, heavier weight at H1.
+h1, .text-alpha {
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.15;
+}
+h2, .text-beta {
+  font-weight: 600;
+  letter-spacing: -0.018em;
+  margin-top: 2.4rem;
+}
+h3, .text-gamma {
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.008em;
+}
+
+// Body prose — slightly wider line-height and generous paragraph spacing
+// so dense Korean text breathes.
+p, li {
+  line-height: 1.7;
+}
+
+// Links — quiet by default. No underline unless hovered or focused.
+.main-content a:not(.btn):not(.nav-list-link) {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms ease-out, color 120ms ease-out;
+
+  &:hover,
+  &:focus-visible {
+    border-bottom-color: currentColor;
+  }
+}
+
+// ─── Site header — OV logomark + wordmark on the left ───────────────────────
+.site-header {
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.site-title {
+  // The logo lives in head_custom.html via an ::before pseudo (see below);
+  // here we just style the wordmark itself.
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  color: #1d1d1f !important;
+
+  // OV mark — same PNG the app uses, rendered via CSS mask so it stays
+  // crisp at any size and we don't need a separate SVG. 24px feels right
+  // at the docs header's overall scale.
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-color: #1d1d1f;
+    -webkit-mask-image: url("/ov-docs/assets/images/logo-symbol.png");
+            mask-image: url("/ov-docs/assets/images/logo-symbol.png");
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+            mask-position: center;
+    -webkit-mask-size: contain;
+            mask-size: contain;
+  }
+}
+
+// ─── Sidebar ────────────────────────────────────────────────────────────────
+.side-bar {
+  border-right: 1px solid var(--border-color);
+}
+
+.nav-list .nav-list-item .nav-list-link {
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background 120ms ease-out;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  &.active {
+    background: rgba(0, 0, 0, 0.06);
+    color: #1d1d1f;
+    font-weight: 600;
+  }
+}
+
+// ─── Main content surface ───────────────────────────────────────────────────
+.main-content {
+  // A touch more breathing room around prose than the default.
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
+  max-width: 820px;
+
+  // H1 separator line under the page title — Stripe Docs / Vercel style.
+  > h1:first-child {
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1.8rem;
+  }
+}
+
+// ─── Tables — Apple-style minimal ───────────────────────────────────────────
+.main-content table {
+  border: none;
+  width: 100%;
+  margin: 1.4rem 0;
+  font-size: 0.9375rem;
+
+  th {
+    background: transparent;
+    font-weight: 600;
+    color: #1d1d1f;
+    border-bottom: 1.5px solid #1d1d1f;
+    padding: 10px 14px;
+    text-align: left;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border-color);
+    color: #424245;
+    vertical-align: top;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+// ─── Code blocks ────────────────────────────────────────────────────────────
+.main-content pre.highlight,
+.main-content figure.highlight {
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: #f5f5f7 !important;
+  padding: 14px 16px !important;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  margin: 1.2rem 0;
+}
+
+.main-content code.language-plaintext,
+.main-content :not(pre) > code {
+  background: #f5f5f7;
+  border-radius: 5px;
+  padding: 0.12em 0.4em;
+  font-size: 0.875em;
+  color: #1d1d1f;
+  border: none;
+}
+
+// ─── Kbd chips — match the in-app `<Kbd>` component ─────────────────────────
+.main-content kbd {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  min-width: 22px;
+  padding: 0 5px;
+  font-size: 11px;
+  font-family: $font-mono;
+  font-weight: 500;
+  color: #424245;
+  background: #f5f5f7;
+  border: 1px solid #d2d2d7;
+  border-radius: 4px;
+  vertical-align: baseline;
+}
+
+// ─── Callout blockquotes (Jekyll's just-the-docs callouts) ──────────────────
+.main-content blockquote {
+  border-left: 3px solid #d2d2d7;
+  background: #fbfbfd;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 1.2rem 0;
+  color: #424245;
+
+  p:last-child { margin-bottom: 0; }
+}
+
+// ─── Hero CTA buttons (used on index.md home) ───────────────────────────────
+.cta-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 28px 0 32px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 980px;       // Apple pill
+  font-weight: 500;
+  font-size: 14.5px;
+  letter-spacing: -0.005em;
+  text-decoration: none !important;
+  transition: transform 120ms ease-out, background 120ms ease-out;
+  border: 1px solid transparent !important;
+
+  &:hover { transform: translateY(-1px); }
+  &:active { transform: translateY(0); }
+}
+.cta-btn-primary {
+  background: #1d1d1f;
+  color: #ffffff !important;
+
+  &:hover { background: #000; }
+}
+.cta-btn-secondary {
+  background: transparent;
+  color: #1d1d1f !important;
+  border-color: #d2d2d7 !important;
+
+  &:hover { background: #fbfbfd; }
+}
+
+// ─── Footer ─────────────────────────────────────────────────────────────────
+.site-footer {
+  color: #6e6e73;
+  font-size: 12.5px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.2rem;
+
+  a {
+    color: #424245;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    &:hover { border-bottom-color: currentColor; }
+  }
+}
+
+// ─── Image rendering — sharper PNG icons on hi-DPI ──────────────────────────
+img[src*="logo-symbol"],
+img[src*="icon.png"] {
+  image-rendering: -webkit-optimize-contrast;
+}
+
+// ─── Print-friendly tweaks (rare but free) ──────────────────────────────────
+@media print {
+  .side-bar, .site-header { display: none !important; }
+  .main-content { max-width: 100% !important; padding: 0 !important; }
+}

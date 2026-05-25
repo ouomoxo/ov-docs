@@ -9,16 +9,12 @@ permalink: /
 
 > 로컬 마크다운 + 노션식 UX + AI Copilot을 한 곳에. 처음 사용자를 위한 공식 가이드입니다.
 
-<div style="display:flex;gap:12px;margin:24px 0;flex-wrap:wrap">
-  <a href="https://github.com/ouomoxo/ov-releases/releases/latest" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:#ff003c;color:white;border-radius:10px;font-weight:600;text-decoration:none">
-    ⬇ OV 다운로드
+<div class="cta-row">
+  <a class="cta-btn cta-btn-primary" href="https://github.com/ouomoxo/ov-releases/releases/latest">
+    ↓&nbsp; OV 다운로드
   </a>
-  <a href="./install/" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:#f3f4f6;color:#1a1a1a;border:1px solid #e5e7eb;border-radius:10px;font-weight:500;text-decoration:none">
-    설치 가이드
-  </a>
-  <a href="./guide/" style="display:inline-flex;align-items:center;gap:6px;padding:8px 18px;background:#f3f4f6;color:#1a1a1a;border:1px solid #e5e7eb;border-radius:10px;font-weight:500;text-decoration:none">
-    사용자 가이드
-  </a>
+  <a class="cta-btn cta-btn-secondary" href="./install/">설치 가이드</a>
+  <a class="cta-btn cta-btn-secondary" href="./guide/">사용자 가이드</a>
 </div>
 
 ---

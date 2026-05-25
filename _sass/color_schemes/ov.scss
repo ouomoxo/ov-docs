@@ -1,0 +1,48 @@
+// OV color scheme for just-the-docs — Apple-grade monochrome.
+//
+// Design intent: black ink on white paper. The OV mark is the only piece of
+// visual identity we need; the rest reads like reference material rather
+// than a marketing page. Red exists in the app as an accent (active note,
+// destructive confirmations) but here we keep it almost entirely out — docs
+// should feel calm, not loud.
+//
+// To switch this on, set `color_scheme: ov` in _config.yml.
+
+// ─── Greys (Apple-style neutral ramp) ────────────────────────────────────────
+$ov-white: #ffffff;
+$ov-paper: #fbfbfd;          // sidebar / hover backgrounds — very faint warm grey
+$ov-ink:   #1d1d1f;          // body text — Apple's near-black
+$ov-ink-2: #424245;          // secondary text
+$ov-ink-3: #6e6e73;          // tertiary / metadata
+$ov-line:  #d2d2d7;          // dividers / borders
+$ov-line-2: #e8e8ed;         // subtle inner borders
+$ov-code-bg: #f5f5f7;        // inline + code-block surface
+
+// Used VERY sparingly — only on the explicit download CTA in index.md.
+// `$link-color` stays black so the body text looks like prose, not a forest
+// of underlines.
+$ov-accent: #0a84ff;         // we lean Apple-blue for links/focus, NOT brand red
+
+// ─── just-the-docs variable overrides ───────────────────────────────────────
+$body-background-color:       $ov-white;
+$sidebar-color:               $ov-paper;
+$body-text-color:             $ov-ink;
+$body-heading-color:          $ov-ink;
+$nav-child-link-color:        $ov-ink-2;
+$search-background-color:     $ov-paper;
+$table-background-color:      $ov-white;
+$feedback-color:              $ov-paper;
+
+// Links — Apple-blue, but only on hover do they underline. Quiet by default.
+$link-color:                  $ov-accent;
+$btn-primary-color:           $ov-ink;
+$base-button-color:           $ov-paper;
+
+// Borders — single hairline everywhere. just-the-docs uses these in tables,
+// nav, and search input.
+$border-color:                $ov-line;
+
+// Code surfaces.
+$code-background-color:       $ov-code-bg;
+$base-code-line-height:       1.55;
+$code-linenumber-color:       $ov-ink-3;

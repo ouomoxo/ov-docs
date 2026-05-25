@@ -23,7 +23,17 @@ plugins:
   - jekyll-sitemap
 
 # ─── Theme settings ──────────────────────────────────────────────────────────
-color_scheme: light
+# Use our custom monochrome scheme defined in _sass/color_schemes/ov.scss.
+# Apple-grade black-on-white; red lives in the app, not in the docs.
+color_scheme: ov
+
+# Logo shown in the top-left header. The same file is used as favicon (via
+# head_custom.html) and as the apple-touch-icon for iOS pinned tabs.
+logo: /assets/images/logo-symbol.png
+
+# Apple-style minimal favicon — points at the same icon as the app.
+favicon_ico: /assets/images/favicon.png
+
 search_enabled: true
 search:
   heading_level: 3
