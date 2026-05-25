@@ -117,9 +117,17 @@ p, li {
 
 .nav-list .nav-list-item .nav-list-link {
   border-radius: 8px;
-  padding: 5px 12px;
+  padding: 5px 10px;
+  font-size: 13.5px;
   font-weight: 500;
   letter-spacing: -0.005em;
+  line-height: 1.4;
+  // Allow Korean labels to wrap to 2 lines instead of being clipped. The
+  // sidebar is ~248px wide in just-the-docs; "자주 묻는 질문" fits, but
+  // "릴리스 가이드 (개발자용)" did not. We now wrap rather than ellipsize
+  // so the whole label is always readable.
+  white-space: normal;
+  word-break: keep-all;
   transition: background 120ms ease-out;
 
   &:hover {
@@ -131,6 +139,13 @@ p, li {
     color: #1d1d1f;
     font-weight: 600;
   }
+}
+
+// Make sure the sidebar itself doesn't squeeze the nav text further with
+// excessive horizontal padding.
+.side-bar .nav-list {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 // ─── Main content surface ───────────────────────────────────────────────────
@@ -454,51 +469,194 @@ img[src*="icon.png"] {
   svg { width: 14px; height: 14px; }
 }
 
-// ─── Screenshot frame placeholder ───────────────────────────────────────────
+// ─── Screenshot frame ───────────────────────────────────────────────────────
 //
-// We don't ship real screenshots in this repo yet — use these placeholders
-// in long-form docs as `<div class="screenshot screenshot--editor">에디터</div>`.
-// When real images are added later, swap to `<img class="screenshot">`.
+// When we don't have a real screenshot yet, the `.editor-mock` variant
+// renders a CSS-only fake of OV's three-column layout (sidebar + main editor
+// + property bar) using empty divs sized to mimic the real app. This reads
+// "this is a notes app" at a glance — way more informative than a striped
+// placeholder. When a real PNG is ready, drop it in as `<img>` inside
+// `.screenshot` and remove the `.editor-mock` class.
+
 .screenshot {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
   border-radius: 14px;
   border: 1px solid var(--border-color);
-  background:
-    linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.01)),
-    repeating-linear-gradient(
-      135deg,
-      transparent 0 12px,
-      rgba(0,0,0,0.025) 12px 13px
-    ),
-    #ffffff;
-  color: #6e6e73;
-  font-size: 13px;
-  font-weight: 500;
-  margin: 24px 0;
-  position: relative;
+  background: #ffffff;
+  margin: 28px 0;
   overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 12px;
-    left: 14px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #ff5f57;
-    box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
-  }
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 18px 40px -16px rgba(0, 0, 0, 0.18);
 }
-.screenshot img {
+
+// Window-chrome traffic lights, top-left of the frame.
+.screenshot::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f57;
+  box-shadow: 16px 0 0 #febc2e, 32px 0 0 #28c840;
+  z-index: 3;
+}
+
+// Optional caption below the chrome (only when no inner mock is present).
+.screenshot__caption {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6e6e73;
+  letter-spacing: -0.005em;
+  z-index: 2;
+}
+
+.screenshot > img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+// ── CSS-only OV editor mock (used inside .screenshot.editor-mock) ──────────
+.editor-mock {
+  // Light wash over the entire frame so the mock pops.
+  background: linear-gradient(180deg, #fbfbfd 0%, #ffffff 60%);
+
+  &__body {
+    position: absolute;
+    inset: 36px 0 0 0;   // leave room for the traffic-light chrome
+    display: grid;
+    grid-template-columns: 44px 220px 1fr 220px;
+    height: calc(100% - 36px);
+  }
+
+  // Left rail (app's icon column).
+  &__rail {
+    background: #fafafa;
+    border-right: 1px solid #ececef;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 0;
+    gap: 6px;
+
+    span {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      background: #e8e8ed;
+    }
+    // Highlight the "Files" icon as if it's the active overlay.
+    span:first-child { background: #1d1d1f; }
+  }
+
+  // File tree column.
+  &__sidebar {
+    background: #fbfbfd;
+    border-right: 1px solid #ececef;
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__folder,
+  &__file {
+    height: 8px;
+    border-radius: 3px;
+    background: #e8e8ed;
+  }
+  &__folder { width: 70%; background: #d2d2d7; }
+  &__file   { width: 55%; }
+  &__file--active { background: #1d1d1f; width: 65%; }
+
+  // Main editor column.
+  &__main {
+    padding: 28px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  &__h1 {
+    height: 14px;
+    width: 60%;
+    border-radius: 4px;
+    background: #1d1d1f;
+  }
+  &__meta {
+    height: 6px;
+    width: 30%;
+    border-radius: 3px;
+    background: #d2d2d7;
+    margin-bottom: 8px;
+  }
+  &__line {
+    height: 6px;
+    border-radius: 3px;
+    background: #d2d2d7;
+  }
+  &__line--80 { width: 80%; }
+  &__line--65 { width: 65%; }
+  &__line--90 { width: 90%; }
+  &__line--40 { width: 40%; }
+  &__bullet {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+    &::before {
+      content: "";
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #6e6e73;
+      flex-shrink: 0;
+    }
+    > i {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: #d2d2d7;
+    }
+  }
+
+  // Right property column.
+  &__props {
+    background: #fbfbfd;
+    border-left: 1px solid #ececef;
+    padding: 20px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  &__prop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    &::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #d2d2d7;
+      flex-shrink: 0;
+    }
+    > i {
+      flex: 1;
+      height: 6px;
+      border-radius: 3px;
+      background: #d2d2d7;
+    }
+  }
 }
 
 // ─── Section heading with optional icon prefix ──────────────────────────────

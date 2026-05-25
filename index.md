@@ -33,12 +33,45 @@ description: 로컬 마크다운 + 노션식 UX + AI Copilot을 한 곳에. OV�
   <span class="pill">{% include icon.html name="palette" size="14" %} Light · Dark</span>
 </div>
 
-<div class="screenshot" aria-label="OV 에디터 화면 미리보기">에디터 미리보기</div>
+<div class="screenshot editor-mock" aria-label="OV 에디터 화면 미리보기" role="img">
+  <div class="screenshot__caption">에디터 미리보기</div>
+  <div class="editor-mock__body">
+    <div class="editor-mock__rail">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="editor-mock__sidebar">
+      <div class="editor-mock__folder"></div>
+      <div class="editor-mock__file"></div>
+      <div class="editor-mock__file editor-mock__file--active"></div>
+      <div class="editor-mock__file"></div>
+      <div class="editor-mock__folder"></div>
+      <div class="editor-mock__file"></div>
+      <div class="editor-mock__file"></div>
+    </div>
+    <div class="editor-mock__main">
+      <div class="editor-mock__h1"></div>
+      <div class="editor-mock__meta"></div>
+      <div class="editor-mock__line editor-mock__line--90"></div>
+      <div class="editor-mock__line editor-mock__line--80"></div>
+      <div class="editor-mock__line editor-mock__line--65"></div>
+      <div class="editor-mock__bullet"><i></i></div>
+      <div class="editor-mock__bullet"><i></i></div>
+      <div class="editor-mock__bullet"><i></i></div>
+      <div class="editor-mock__line editor-mock__line--40"></div>
+    </div>
+    <div class="editor-mock__props">
+      <div class="editor-mock__prop"><i></i></div>
+      <div class="editor-mock__prop"><i></i></div>
+      <div class="editor-mock__prop"><i></i></div>
+      <div class="editor-mock__prop"><i></i></div>
+    </div>
+  </div>
+</div>
 
 ## 핵심 기능
 {: .section-head }
 
-<div class="feature-grid">
+<div class="feature-grid" markdown="0">
   <a class="feature-card" href="./guide/#1-vault--노트를-저장하는-폴더">
     <div class="feature-card__icon">{% include icon.html name="folder" size="22" %}</div>
     <h3 class="feature-card__title">로컬 우선</h3>
@@ -79,7 +112,7 @@ description: 로컬 마크다운 + 노션식 UX + AI Copilot을 한 곳에. OV�
 ## 시작하기
 {: .section-head }
 
-<div class="feature-grid">
+<div class="feature-grid" markdown="0">
   <a class="feature-card feature-card--compact" href="./install/">
     <div class="feature-card__icon">{% include icon.html name="download" size="18" %}</div>
     <div>
@@ -106,7 +139,7 @@ description: 로컬 마크다운 + 노션식 UX + AI Copilot을 한 곳에. OV�
 ## 자주 찾는 페이지
 {: .section-head }
 
-<div class="feature-grid">
+<div class="feature-grid" markdown="0">
   <a class="feature-card feature-card--compact" href="./faq/">
     <div class="feature-card__icon">{% include icon.html name="help-circle" size="18" %}</div>
     <div>

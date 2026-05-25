@@ -1,5 +1,5 @@
 ---
-title: 릴리스 가이드 (개발자용)
+title: 릴리스 (개발자)
 layout: default
 nav_order: 9
 permalink: /release/
