@@ -1,0 +1,71 @@
+# Jekyll configuration for the OV documentation site.
+#
+# This folder is the root of the `ouomoxo/ov-docs` public repository — push
+# it as the entire content of that repo. GitHub Pages auto-builds the Jekyll
+# site from the default branch.
+#
+# Theme: just-the-docs (https://just-the-docs.com). Lightweight docs site
+# with built-in search, sidebar nav, and a clean Apple-grade look that
+# matches OV's in-app design. Used as a `remote_theme` so we don't vendor
+# the theme files locally.
+
+title: OV Docs
+description: Notes, todos & ideas — Obsidian-style local markdown with Notion-grade UX.
+url: https://ouomoxo.github.io
+baseurl: /ov-docs
+
+remote_theme: just-the-docs/just-the-docs
+
+# Built-in plugins allowed by GitHub Pages.
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ─── Theme settings ──────────────────────────────────────────────────────────
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s\-/]+/
+  rel_url: true
+  button: false
+
+# Match OV's red accent — uses Apple system-style #ff003c.
+callouts:
+  warning:
+    title: 주의
+    color: yellow
+  note:
+    title: 메모
+    color: blue
+  tip:
+    title: 팁
+    color: green
+
+# Where the source code lives. just-the-docs renders a small "Edit this page"
+# link at the bottom of each doc that points here.
+gh_edit_link: true
+gh_edit_link_text: 이 페이지 수정 제안
+gh_edit_repository: https://github.com/ouomoxo/ov-docs
+gh_edit_branch: main
+gh_edit_view_mode: edit
+
+# Footer note across every page.
+footer_content: |
+  © 2026 OV · <a href="https://github.com/ouomoxo/ov-docs">소스</a> ·
+  <a href="https://github.com/ouomoxo/ov-releases/releases">다운로드</a>
+
+# Don't include build artifacts / repo metadata in the published site.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - README.md  # site home lives in index.md; README is for the repo landing page
+
+# Make pretty URLs (no .html suffix) where possible.
+permalink: pretty

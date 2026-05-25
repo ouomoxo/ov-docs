@@ -1,0 +1,19 @@
+# Jekyll / GitHub Pages local-build artifacts. The published site is built
+# by GitHub Actions, so these never need to be committed.
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+.bundle/
+
+# Bundler — Gemfile.lock is helpful for local reproducibility but not
+# strictly needed (GitHub Pages uses its own pinned version).
+# Comment the next line out if you want to commit it.
+# Gemfile.lock
+
+# macOS / editor cruft
+.DS_Store
+.idea/
+.vscode/
+*.swp
