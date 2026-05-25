@@ -1,0 +1,28 @@
+{%- comment -%}
+  Inline Lucide-style SVG icon. Usage in any markdown page:
+
+      {% include icon.html name="folder" size="24" class="hero-icon" %}
+
+  Defaults:
+    - size:  24
+    - class: "" (no extra class)
+    - color: inherits `currentColor` so it picks up whatever ink color the
+             parent has — works in light AND dark contexts without changes.
+
+  Why an inline SVG instead of <img src=…>? Inline lets CSS color the
+  strokes (`currentColor`), supports hover transitions, and avoids an
+  extra HTTP request per icon.
+
+  Available icons: folder, file-text, sparkles, calendar, shield,
+                   keyboard, database, download, help-circle,
+                   alert-triangle, palette, git-branch, lock
+{%- endcomment -%}
+
+{% assign _name = include.name %}
+{% assign _size = include.size | default: 24 %}
+{% assign _class = include.class | default: '' %}
+
+<span class="ov-icon {{ _class }}" style="--icon-size: {{ _size }}px" aria-hidden="true">
+  {%- capture _svg -%}{% include icons/{{ _name }}.svg %}{%- endcapture -%}
+  {{ _svg }}
+</span>

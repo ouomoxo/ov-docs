@@ -1,64 +1,156 @@
 ---
-title: OV 문서
+title: 홈
 layout: default
 nav_order: 1
 permalink: /
+description: 로컬 마크다운 + 노션식 UX + AI Copilot을 한 곳에. OV의 공식 문서.
 ---
 
-# OV Documentation
+<section class="hero">
+  <div class="hero__logo" aria-hidden="true"></div>
+  <div class="hero__eyebrow">OV Documentation</div>
+  <h1 class="hero__title">로컬 마크다운을<br>노션처럼 쓰는 방법.</h1>
+  <p class="hero__lede">
+    OV는 데이터를 당신 컴퓨터에 두면서, 노션식 블록 에디터와 vault를 이해하는 AI Copilot을 더한 데스크탑 노트 앱이에요. 이 사이트는 처음 사용자를 위한 공식 가이드입니다.
+  </p>
 
-> 로컬 마크다운 + 노션식 UX + AI Copilot을 한 곳에. 처음 사용자를 위한 공식 가이드입니다.
+  <div class="cta-row">
+    <a class="cta-btn cta-btn-primary" href="https://github.com/ouomoxo/ov-releases/releases/latest">
+      {% include icon.html name="download" size="16" %}
+      OV 다운로드
+    </a>
+    <a class="cta-btn cta-btn-secondary" href="./install/">설치 가이드</a>
+    <a class="cta-btn cta-btn-secondary" href="./guide/">사용자 가이드</a>
+  </div>
+</section>
 
-<div class="cta-row">
-  <a class="cta-btn cta-btn-primary" href="https://github.com/ouomoxo/ov-releases/releases/latest">
-    ↓&nbsp; OV 다운로드
+<div class="pill-row">
+  <span class="pill">{% include icon.html name="folder" size="14" %} 로컬 마크다운</span>
+  <span class="pill">{% include icon.html name="file-text" size="14" %} 블록 에디터</span>
+  <span class="pill">{% include icon.html name="database" size="14" %} 데이터베이스 뷰</span>
+  <span class="pill">{% include icon.html name="sparkles" size="14" %} AI Copilot</span>
+  <span class="pill">{% include icon.html name="lock" size="14" %} 키체인 암호화</span>
+  <span class="pill">{% include icon.html name="palette" size="14" %} Light · Dark</span>
+</div>
+
+<div class="screenshot" aria-label="OV 에디터 화면 미리보기">에디터 미리보기</div>
+
+## 핵심 기능
+{: .section-head }
+
+<div class="feature-grid">
+  <a class="feature-card" href="./guide/#1-vault--노트를-저장하는-폴더">
+    <div class="feature-card__icon">{% include icon.html name="folder" size="22" %}</div>
+    <h3 class="feature-card__title">로컬 우선</h3>
+    <p class="feature-card__body">모든 노트는 평범한 <code>.md</code> 파일. Obsidian / iA Writer / VS Code와 그대로 호환. 데이터 잠금 없음.</p>
   </a>
-  <a class="cta-btn cta-btn-secondary" href="./install/">설치 가이드</a>
-  <a class="cta-btn cta-btn-secondary" href="./guide/">사용자 가이드</a>
+
+  <a class="feature-card" href="./guide/#2-마크다운-작성">
+    <div class="feature-card__icon">{% include icon.html name="file-text" size="22" %}</div>
+    <h3 class="feature-card__title">블록 에디터</h3>
+    <p class="feature-card__body">TipTap 기반. 슬래시(<code>/</code>) 메뉴, 콜아웃, 토글, 임베드, 위키링크가 자연스럽게 흐름에 녹아듭니다.</p>
+  </a>
+
+  <a class="feature-card" href="./guide/#4-데이터베이스-뷰-2">
+    <div class="feature-card__icon">{% include icon.html name="database" size="22" %}</div>
+    <h3 class="feature-card__title">데이터베이스 뷰</h3>
+    <p class="feature-card__body">frontmatter 속성이 자동으로 컬럼이 돼요. Table · Kanban · Calendar 세 가지 뷰로 전환.</p>
+  </a>
+
+  <a class="feature-card" href="./guide/#5-캘린더--일정">
+    <div class="feature-card__icon">{% include icon.html name="calendar" size="22" %}</div>
+    <h3 class="feature-card__title">캘린더 + Day view</h3>
+    <p class="feature-card__body"><code>date</code> 필드를 가진 노트들이 캘린더로. 시간 슬롯 Day view에 NOW 라인까지.</p>
+  </a>
+
+  <a class="feature-card" href="./guide/#6-ai-copilot-j">
+    <div class="feature-card__icon">{% include icon.html name="sparkles" size="22" %}</div>
+    <h3 class="feature-card__title">AI Copilot</h3>
+    <p class="feature-card__body">vault를 읽고 변경을 <strong>제안</strong>. 모든 적용은 diff 확인 후 사용자 승인. 자동 수정 없음.</p>
+  </a>
+
+  <a class="feature-card" href="./guide/#7-보안">
+    <div class="feature-card__icon">{% include icon.html name="shield" size="22" %}</div>
+    <h3 class="feature-card__title">프라이버시 우선</h3>
+    <p class="feature-card__body">Telemetry 없음. API 키는 OS 키체인 암호화. 자세한 건 <a href="./privacy/">Privacy</a>.</p>
+  </a>
+</div>
+
+## 시작하기
+{: .section-head }
+
+<div class="feature-grid">
+  <a class="feature-card feature-card--compact" href="./install/">
+    <div class="feature-card__icon">{% include icon.html name="download" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">1. 설치 & 첫 실행</h3>
+      <p class="feature-card__body">macOS / Windows / Linux 단계별 가이드.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="./guide/">
+    <div class="feature-card__icon">{% include icon.html name="file-text" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">2. 사용자 가이드</h3>
+      <p class="feature-card__body">vault부터 Copilot까지 10 섹션.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="./shortcuts/">
+    <div class="feature-card__icon">{% include icon.html name="keyboard" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">3. 단축키 외우기</h3>
+      <p class="feature-card__body">⌘K · ⌘P · ⌘J · ⌘/ 부터.</p>
+    </div>
+  </a>
+</div>
+
+## 자주 찾는 페이지
+{: .section-head }
+
+<div class="feature-grid">
+  <a class="feature-card feature-card--compact" href="./faq/">
+    <div class="feature-card__icon">{% include icon.html name="help-circle" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">자주 묻는 질문</h3>
+      <p class="feature-card__body">설치·보안·Copilot Q&amp;A.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="./troubleshooting/">
+    <div class="feature-card__icon">{% include icon.html name="alert-triangle" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">문제 해결</h3>
+      <p class="feature-card__body">잘 안 될 때 확인할 것들.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="./colors/">
+    <div class="feature-card__icon">{% include icon.html name="palette" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">색상 도감</h3>
+      <p class="feature-card__body">Callout 5색의 의미.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="./changelog/">
+    <div class="feature-card__icon">{% include icon.html name="git-branch" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">릴리스 노트</h3>
+      <p class="feature-card__body">v1.0 → v1.1 → v1.2.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="./privacy/">
+    <div class="feature-card__icon">{% include icon.html name="lock" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">프라이버시</h3>
+      <p class="feature-card__body">데이터가 어디로 가는지, 안 가는지.</p>
+    </div>
+  </a>
+  <a class="feature-card feature-card--compact" href="https://github.com/ouomoxo/ov-releases/issues">
+    <div class="feature-card__icon">{% include icon.html name="git-branch" size="18" %}</div>
+    <div>
+      <h3 class="feature-card__title">버그 신고 / 토론</h3>
+      <p class="feature-card__body">GitHub Issues로 알려주세요.</p>
+    </div>
+  </a>
 </div>
 
 ---
 
-## 한눈에 보기
-
-OV는 [Obsidian](https://obsidian.md)의 *로컬 마크다운 저장* + [Notion](https://notion.so)의 *풍부한 블록 에디터* + *vault를 이해하는 AI Copilot*을 합친 데스크탑 노트 앱입니다.
-
-- 🗂 **로컬 우선** — 모든 노트는 `~/Documents/OV` 안의 `.md` 파일. 데이터 잠금(lock-in) 없음
-- ✍️ **블록 에디터** — TipTap 기반. 슬래시 메뉴, 콜아웃, 토글, 임베드, 위키링크
-- 📊 **데이터베이스 뷰** — frontmatter를 자동 컬럼화. Table · Kanban · Calendar
-- 🤖 **AI Copilot** — vault를 읽고 변경을 *제안*. 모든 적용은 사용자 승인 후
-- 🔒 **프라이버시** — telemetry 없음. API 키는 OS 키체인(safeStorage) 암호화
-- 🌗 **Light / Dark** — Apple 톤의 두 테마, 둘 다 WCAG AA 통과
-
----
-
-## 시작하기
-
-| 단계 | 무엇을 |
-|---|---|
-| 1️⃣ | [설치](./install/) — DMG / NSIS / AppImage 받아서 실행 |
-| 2️⃣ | 앱이 자동으로 8단계 **인터랙티브 투어** 실행 — 직접 클릭해보며 학습 |
-| 3️⃣ | [사용자 가이드](./guide/) — 모든 기능 한 페이지에 |
-| 4️⃣ | 막힐 땐 우측 레일 `?` 또는 `⌘/` 단축키 시트 |
-
----
-
-## 문서 목차
-
-- **[설치 & 첫 실행](./install/)** — 플랫폼별 설치 단계
-- **[사용자 가이드](./guide/)** — vault / 마크다운 / DB / 캘린더 / Copilot / 보안 10개 섹션
-- **[단축키](./shortcuts/)** — 핵심 단축키 모음
-- **[자주 묻는 질문](./faq/)** — FAQ
-- **[문제 해결](./troubleshooting/)** — 잘 안 될 때 확인할 것
-- **[색상 도감](./colors/)** — Callout 색의 의미
-- **[릴리스 노트](./changelog/)** — 버전별 변경 내역
-
----
-
-## 도움이 더 필요해요
-
-- **GitHub Issues** — [버그 신고 / 기능 제안](https://github.com/ouomoxo/ov-releases/issues)
-- **Discussions** — [질문 & 토론](https://github.com/ouomoxo/ov-releases/discussions)
-- **앱 안에서** — `⌘/` 단축키 시트, 우측 레일 `?` 도움말 메뉴
-
-OV는 로컬 우선, 오픈 데이터, telemetry 없는 노트 앱이에요. 좋은 글쓰기 되세요 ✨
+OV는 로컬 우선, 오픈 데이터, telemetry 없는 노트 앱이에요. 좋은 글쓰기 되세요.
